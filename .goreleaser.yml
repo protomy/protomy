@@ -1,0 +1,129 @@
+env:
+  - GO111MODULE=on
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - <<: &build_defaults
+      env:
+        - CGO_ENABLED=0
+      binary: bin/protomy
+      main: ./cmd/protomy
+      ldflags:
+        - -s -w -X github.com/protomy/protomy/internal/command.Version={{.Version}}
+    id: macos
+    goos: [darwin]
+    goarch: [amd64]
+  - <<: *build_defaults
+    id: linux
+    goos: [linux]
+    goarch: [386, amd64, arm64]
+  - <<: *build_defaults
+    id: windows
+    goos: [windows]
+    goarch: [386, amd64]
+
+archives:
+  - id: nix
+    builds: [macos, linux]
+    <<: &archive_defaults
+      name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+      replacements:
+        darwin: macOS
+        linux: Linux
+        windows: Windows
+        386: 386
+        amd64: x86_64
+    wrap_in_directory: true
+    format: tar.gz
+  - id: windows
+    builds: [windows]
+    <<: *archive_defaults
+    wrap_in_directory: false
+    format: zip
+
+checksum:
+  name_template: "{{ .ProjectName }}-{{ .Version }}-checksums.txt"
+
+signs:
+  - artifacts: checksum
+    args: ["--batch", "-u", "{{ .Env.GPG_FINGERPRINT }}", "--output", "${signature}", "--detach-sign", "${artifact}"]
+
+dockers:
+  - builds: [linux]
+    goos: linux
+    goarch: amd64
+    binaries: [protomy]
+    image_templates:
+      - "docker.pkg.github.com/protomy/protomy/protomy:latest"
+      - "docker.pkg.github.com/protomy/protomy/protomy:{{ .Tag }}"
+      - "docker.pkg.github.com/protomy/protomy/protomy:v{{ .Major }}"
+      - "docker.pkg.github.com/protomy/protomy/protomy:v{{ .Major }}.{{ .Minor }}"
+    build_flag_templates:
+      - "--pull"
+      - "--label=org.opencontainers.image.authors=Tony Burns <tony@tonyburns.net>"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.description=Generate projects from templates in version control systems"
+      - "--label=org.opencontainers.image.documentation=https://protomy.dev"
+      - "--label=org.opencontainers.image.licenses=Apache-2.0"
+      - "--label=org.opencontainers.image.name={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.source=https://github.com/protomy/protomy"
+      - "--label=org.opencontainers.image.title=Protomy"
+      - "--label=org.opencontainers.image.url=https://protomy.dev"
+      - "--label=org.opencontainers.image.vendor=Tony Burns <tony@tonyburns.net>"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+
+brews:
+  - name: protomy
+    ids: [nix]
+    github:
+      owner: protomy
+      name: homebrew-protomy
+    skip_upload: auto
+    description: Protomy
+    homepage: protomy.dev
+    folder: Formula
+    custom_block: |
+      head do
+        url "https://github.com/protomy/protomy.git"
+        depends_on "go"
+      end
+    install: |
+      system "make" if build.head?
+      bin.install "bin/protomy"
+      (bash_completion/"protomy.sh").write `#{bin}/protomy completion -s bash`
+      (zsh_completion/"_protomy").write `#{bin}/protomy completion -s zsh`
+      (fish_completion/"protomy.fish").write `#{bin}/protomy completion -s fish`
+    test: |
+      help_text = shell_output("#{bin}/protomy --help")
+      assert_includes help_text, "Usage:"
+
+nfpms:
+  - license: Apache 2.0
+    maintainer: Tony Burns <tony@tonyburns.net>
+    description: Software to generate projects from templates in version control systems
+    homepage: https://github.io/craftyphotons/protomy
+    file_name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    formats:
+      - deb
+      - rpm
+    replacements:
+      darwin: Darwin
+      linux: Linux
+
+release:
+  github:
+    owner: protomy
+    name: protomy
+  prerelease: auto
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
+    - '^refactor:'
