@@ -19,10 +19,6 @@ jobs:
       - name: Unshallow
         run: git fetch --prune --unshallow
 
-#      - uses: Dovyski/payload-info-action@master
-#        with:
-#          print: true
-
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v2
