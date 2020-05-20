@@ -22,6 +22,7 @@ jobs:
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v2
+        if: "github.repository_owner == 'protomy'"
         with:
           git_user_signingkey: true
           git_commit_gpgsign: true
@@ -69,6 +70,7 @@ jobs:
         uses: codecov/codecov-action@v1.0.7
 
       - name: Log in to Docker
+        if: "github.repository_owner == 'protomy'"
         run: |
           echo $GITHUB_TOKEN | docker login docker.pkg.github.com -u protomybot --password-stdin
         env:
@@ -76,7 +78,7 @@ jobs:
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
-        if: "!startsWith(github.ref, 'refs/tags/')"
+        if: "github.repository_owner == 'protomy' && !startsWith(github.ref, 'refs/tags/')"
         with:
           version: latest
           args: release --rm-dist --skip-publish --snapshot
