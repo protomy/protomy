@@ -61,6 +61,10 @@ dockers:
       - "docker.pkg.github.com/protomy/protomy/protomy:{{ .Tag }}"
       - "docker.pkg.github.com/protomy/protomy/protomy:v{{ .Major }}"
       - "docker.pkg.github.com/protomy/protomy/protomy:v{{ .Major }}.{{ .Minor }}"
+      - "quay.io/protomy/protomy:latest"
+      - "quay.io/protomy/protomy:{{ .Tag }}"
+      - "quay.io/protomy/protomy:v{{ .Major }}"
+      - "quay.io/protomy/protomy:v{{ .Major }}.{{ .Minor }}"
     build_flag_templates:
       - "--pull"
       - "--label=org.opencontainers.image.authors=Tony Burns <tony@tonyburns.net>"
