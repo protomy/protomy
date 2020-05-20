@@ -31,8 +31,11 @@ jobs:
       - name: Log in to Docker
         run: |
           echo $GITHUB_TOKEN | docker login docker.pkg.github.com -u protomybot --password-stdin
+          echo $QUAY_TOKEN | docker login quay.io -u $QUAY_USERNAME --password-stdin
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          QUAY_TOKEN: ${{ secrets.QUAY_TOKEN }}
+          QUAY_USERNAME: ${{ secrets.QUAY_USERNAME }}
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
