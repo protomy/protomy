@@ -87,7 +87,7 @@ brews:
       owner: protomy
       name: homebrew-protomy
     skip_upload: auto
-    description: Protomy
+    description: Software to generate projects from templates in version control
     homepage: protomy.dev
     folder: Formula
     custom_block: |
@@ -108,7 +108,7 @@ brews:
 nfpms:
   - license: Apache 2.0
     maintainer: Tony Burns <tony@tonyburns.net>
-    description: Software to generate projects from templates in version control systems
+    description: Software to generate projects from templates in version control
     homepage: https://github.io/craftyphotons/protomy
     file_name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
     formats:
@@ -117,6 +117,19 @@ nfpms:
     replacements:
       darwin: Darwin
       linux: Linux
+
+scoop:
+  bucket:
+    owner: protomy
+    name: scoop-protomy
+  commit_author:
+    name: Protomy Bot
+    email: automation@protomy.dev
+  commit_msg_template: "release: Update for {{ .ProjectName }} {{ .Tag }}"
+  homepage: https://protomy.dev
+  description: Software to generate projects from templates in version control
+  license: Apache 2.0
+  skip_upload: auto
 
 release:
   github:
