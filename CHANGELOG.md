@@ -1,5 +1,9 @@
 # Protomy Changelog
 
+## [v0.0.1](https://github.com/protomy/protomy/tree/v0.0.1) (2020-05-20)
+
+[Full Changelog](https://github.com/protomy/protomy/compare/v0.0.0...v0.0.1)
+
 ## [v0.0.0](https://github.com/protomy/protomy/tree/v0.0.0) (2020-05-20)
 
 [Full Changelog](https://github.com/protomy/protomy/compare/e90e8611cf5bbf935eb61fa7e1ba84b6d2f39ba0...v0.0.0)
