@@ -1,0 +1,23 @@
+# protomy(1) -- Generate projects from templates in version control
+
+## SYNOPSIS
+
+`protomy` [command] [options] <template> <project>
+
+## DESCRIPTION
+
+## OPTIONS
+
+## EXIT STATUS
+
+## ENVIRONMENT
+
+## FILES
+
+## NOTES
+
+## BUGS
+
+## EXAMPLE
+
+## SEE ALSO
