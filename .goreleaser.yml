@@ -80,12 +80,28 @@ dockers:
       - "--label=org.opencontainers.image.vendor=Tony Burns <tony@tonyburns.net>"
       - "--label=org.opencontainers.image.version={{.Version}}"
 
+nfpms:
+  - license: Apache 2.0
+    maintainer: Tony Burns <tony@tonyburns.net>
+    description: Software to generate projects from templates in version control
+    homepage: https://github.io/craftyphotons/protomy
+    file_name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    formats:
+      - deb
+      - rpm
+    replacements:
+      darwin: Darwin
+      linux: Linux
+
 brews:
   - name: protomy
     ids: [nix]
     github:
       owner: protomy
       name: homebrew-protomy
+    commit_author:
+      name: Protomy Bot
+      email: automation@protomy.dev
     skip_upload: auto
     description: Software to generate projects from templates in version control
     homepage: protomy.dev
@@ -104,19 +120,6 @@ brews:
     test: |
       help_text = shell_output("#{bin}/protomy --help")
       assert_includes help_text, "Usage:"
-
-nfpms:
-  - license: Apache 2.0
-    maintainer: Tony Burns <tony@tonyburns.net>
-    description: Software to generate projects from templates in version control
-    homepage: https://github.io/craftyphotons/protomy
-    file_name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
-    formats:
-      - deb
-      - rpm
-    replacements:
-      darwin: Darwin
-      linux: Linux
 
 scoop:
   bucket:
