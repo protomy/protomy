@@ -104,7 +104,7 @@ brews:
       email: automation@protomy.dev
     skip_upload: auto
     description: Software to generate projects from templates in version control
-    homepage: protomy.dev
+    homepage: https://protomy.dev
     folder: Formula
     custom_block: |
       head do
