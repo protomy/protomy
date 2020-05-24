@@ -1,0 +1,53 @@
+site_name: Protomy
+site_description: Generate projects and keep them updated from templates in your VCS
+site_author: Tony Burns
+site_url: https://protomy.dev
+repo_name: protomy/protomy
+repo_url: https://github.com/protomy/protomy
+copyright: Copyright &copy; 2020 Anthony Burns
+
+nav:
+  - Home: index.md
+
+theme:
+  name: material
+  language: en
+  palette:
+    primary: blue grey
+    accent: blue grey
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/protomy_cli
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/protomy
+
+google_analytics:
+  - UA-167053591-1
+  - auto
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: timeago
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - footnotes
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.tabbed
+  - toc:
+      permalink: true

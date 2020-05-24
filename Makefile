@@ -63,4 +63,11 @@ tidy:
 vet:
 	$(GO_VET) -v ./...
 
-.PHONY: all ci install bench clean fmt lint test tidy vet
+docs:
+	( \
+		source .venv/bin/activate; \
+		pip install -r requirements.txt; \
+		mkdocs build \
+	)
+
+.PHONY: all ci docs install bench clean fmt lint test tidy vet

@@ -5,7 +5,17 @@
 *.out
 *.so
 *.test
+.env
+.venv
+/site
+ENV/
 bin/
 coverage.txt
 dist/
+env.bak/
+env/
+pip-delete-this-directory.txt
+pip-log.txt
 vendor/
+venv.bak/
+venv/
