@@ -7,7 +7,27 @@ repo_url: https://github.com/protomy/protomy
 copyright: Copyright &copy; 2020 Anthony Burns
 
 nav:
-  - Home: index.md
+  - Welcome: index.md
+  - Getting Started:
+      - Quickstart: getting-started/quickstart.md
+      - Installation: getting-started/installation.md
+      - Frequently Asked Questions: getting-started/frequently-asked-questions.md
+      - Support: getting-started/support.md
+  - Concepts:
+      - Overview: concepts/index.md
+  - Tasks:
+      - Overview: tasks/index.md
+  - Tutorials:
+      - Overview: tutorials/index.md
+  - Reference:
+      - Overview: reference/index.md
+  - Contributing:
+      - Overview: contributing/index.md
+      - Submitting Issues: contributing/submitting-issues.md
+      - Submitting Pull Requests: contributing/submitting-pull-requests.md
+      - Security: contributing/security.md
+      - Local Development: contributing/local-development.md
+      - Documentation: contributing/documentation.md
 
 theme:
   name: material
