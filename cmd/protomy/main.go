@@ -16,8 +16,8 @@
 
 package main
 
-import "fmt"
+import "github.com/protomy/protomy/internal/cli"
 
 func main() {
-	fmt.Println("Hello")
+	cli.Start()
 }

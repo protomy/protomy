@@ -14,4 +14,22 @@
  * limitations under the License.
  */
 
-package main
+package command
+
+import (
+	"fmt"
+
+	"github.com/spf13/cobra"
+)
+
+func NewDownloadCommand() *cobra.Command {
+	return &cobra.Command{
+		Use:   "download",
+		Short: "Download a template",
+		Run:   downloadCommandFunc,
+	}
+}
+
+func downloadCommandFunc(cmd *cobra.Command, args []string) {
+	fmt.Println("Running download command...")
+}

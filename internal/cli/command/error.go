@@ -14,4 +14,20 @@
  * limitations under the License.
  */
 
-package main
+package command
+
+import (
+	"fmt"
+	"os"
+)
+
+const (
+	ExitSuccess = iota
+	ExitError
+	ExitInvalidArgument = 128
+)
+
+func ExitWithError(code int, err error) {
+	_, _ = fmt.Fprintln(os.Stderr, "Error: ", err)
+	os.Exit(code)
+}

@@ -14,4 +14,22 @@
  * limitations under the License.
  */
 
-package main
+package command
+
+import (
+	"fmt"
+
+	"github.com/spf13/cobra"
+)
+
+func NewValidateCommand() *cobra.Command {
+	return &cobra.Command{
+		Use:   "validate",
+		Short: "Validate a template",
+		Run:   validateCommandFunc,
+	}
+}
+
+func validateCommandFunc(cmd *cobra.Command, args []string) {
+	fmt.Println("Running validate command...")
+}

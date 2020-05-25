@@ -14,4 +14,22 @@
  * limitations under the License.
  */
 
-package main
+package command
+
+import (
+	"fmt"
+
+	"github.com/spf13/cobra"
+)
+
+func NewConfigCommand() *cobra.Command {
+	return &cobra.Command{
+		Use:   "config",
+		Short: "Read or write configuration",
+		Run:   configCommandFunc,
+	}
+}
+
+func configCommandFunc(cmd *cobra.Command, args []string) {
+	fmt.Println("Running config command...")
+}

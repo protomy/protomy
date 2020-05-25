@@ -14,4 +14,11 @@
  * limitations under the License.
  */
 
-package main
+package command
+
+type GlobalFlags struct {
+	ConfigFilename  string
+	ConfigOverrides map[string]string
+	Quiet           bool
+	Verbose         bool
+}

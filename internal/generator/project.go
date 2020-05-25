@@ -14,4 +14,7 @@
  * limitations under the License.
  */
 
-package main
+package generator
+
+type Project struct {
+}

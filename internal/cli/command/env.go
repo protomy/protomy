@@ -16,4 +16,27 @@
 
 package command
 
-var Version = "DEV"
+import (
+	"fmt"
+
+	"github.com/spf13/cobra"
+)
+
+func NewEnvCommand() *cobra.Command {
+	return &cobra.Command{
+		Use:   "env",
+		Short: "Print information about the current environment",
+		Run:   envCommandFunc,
+	}
+}
+
+func envCommandFunc(cmd *cobra.Command, args []string) {
+	fmt.Println("Configuration overrides:")
+	configOverrides, err := cmd.Flags().GetStringToString("config-option")
+	if err != nil {
+		ExitWithError(ExitError, err)
+	}
+	for key, value := range configOverrides {
+		fmt.Println("  ", key, ":", value)
+	}
+}
