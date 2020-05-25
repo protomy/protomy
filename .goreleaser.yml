@@ -4,6 +4,7 @@ env:
 before:
   hooks:
     - go mod tidy
+    - make man
 
 builds:
   - <<: &build_defaults
@@ -37,6 +38,7 @@ archives:
         386: 386
         amd64: x86_64
       files:
+        - share/man/**/*
         - CHANGELOG.md
         - LICENSE
         - README.md

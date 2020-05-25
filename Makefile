@@ -70,4 +70,14 @@ docs:
 		mkdocs build \
 	)
 
-.PHONY: all ci docs install bench clean fmt lint test tidy vet
+man:
+	rm -fr share/man
+	mkdir -p share/man/man{1,5,7}
+	cp man/*.1 share/man/man1
+	# man/*.5 share/man/man5
+	# man/*.7 share/man/man7
+	find share/man -type f -name "*.1" -exec sed -i.bak "s/%%DATE%%/$(shell date +%Y-%m-%d)/g" {} \;
+	find share/man -type f -name "*.1" -exec sed -i.bak "s/%%VERSION%%/$(shell cat VERSION)/g" {} \;
+	rm -fr share/man/**/*.bak
+
+.PHONY: all ci docs man install bench clean fmt lint test tidy vet

@@ -16,6 +16,7 @@ env.bak/
 env/
 pip-delete-this-directory.txt
 pip-log.txt
+share/man
 vendor/
 venv.bak/
 venv/
