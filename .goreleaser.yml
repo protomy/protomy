@@ -126,6 +126,7 @@ brews:
       (bash_completion/"protomy.sh").write `#{bin}/protomy completion -s bash`
       (zsh_completion/"_protomy").write `#{bin}/protomy completion -s zsh`
       (fish_completion/"protomy.fish").write `#{bin}/protomy completion -s fish`
+      man1.install "share/man/man1/protomy.1"
     test: |
       help_text = shell_output("#{bin}/protomy --help")
       assert_includes help_text, "Usage:"
