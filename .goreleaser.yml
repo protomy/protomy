@@ -36,6 +36,13 @@ archives:
         windows: Windows
         386: 386
         amd64: x86_64
+      files:
+        - CHANGELOG.md
+        - LICENSE
+        - README.md
+        - ROADMAP.md
+        - SECURITY.md
+        - SUPPORT.md
     wrap_in_directory: true
     format: tar.gz
   - id: windows
