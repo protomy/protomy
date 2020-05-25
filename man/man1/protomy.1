@@ -1,0 +1,188 @@
+.\"
+.\" Copyright 2020 Anthony Burns
+.\"
+.\" Licensed under the Apache License, Version 2.0 (the "License");
+.\" you may not use this file except in compliance with the License.
+.\" You may obtain a copy of the License at
+.\"
+.\"     http://www.apache.org/licenses/LICENSE-2.0
+.\"
+.\" Unless required by applicable law or agreed to in writing, software
+.\" distributed under the License is distributed on an "AS IS" BASIS,
+.\" WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+.\" See the License for the specific language governing permissions and
+.\" limitations under the License.
+.\"
+.
+.TH PROTOMY 1 "{{DATE}}" "Protomy {{VERSION}}" "Protomy Manual"
+.
+.\" ===================================================================
+.SH NAME
+.\" ===================================================================
+.
+protomy \- generate projects from templates in version control
+.
+.\" ===================================================================
+.SH SYNOPSIS
+.\" ===================================================================
+.
+.SY protomy
+.RI < command >
+.RI [ arg
+\&.\|.\|.\&]
+.OP \-nqv
+.OP \-C filename
+.RB [ -c " name=value"
+\&.\|.\|.\&]
+.RI [ option
+\&.\|.\|.\&]
+.YS
+.
+.SY protomy
+.B \-h
+.SY protomy
+.B \-\-help
+.SY protomy
+.B help
+.YS
+.
+.SY protomy
+.B \-V
+.SY protomy
+.B \-\-version
+.YS
+.
+.\" ===================================================================
+.SH DESCRIPTION
+.\" ===================================================================
+.
+This document describes the \fBprotomy\fR program. \fBprotomy\fR is a project generator that uses templates from
+various sources like version control repositories and compressed archives to generate or update project files
+locally and act as a machine user to integrate the changes it makes into the project's own workflow.
+.
+.\" ===================================================================
+.SH OPTIONS
+.\" ===================================================================
+.
+.TP
+.BI \-c " <name>=<value>"
+Set the configuration option \fIname\fR to \fIvalue\fR. If \fI=<value>\fR is omitted, the boolean true value is set for
+\fIkey\fR.
+.IP
+Configuration options set via \fB\-c\fR override those in configuration files and environment variables.
+.
+.TP
+.BI \-C " filename"
+.TQ
+.BI \-\-config " filename"
+Read configuration from \fIfilename\fR.
+.
+.TP
+.BR \-h ", " \-\-help
+Print information about commonly used commands and options. Shortcut to \fBprotomy-help\fR(1) with no options.
+.
+.TP
+.BR \-n ", " \-\-dry\-run
+Output intended actions but do not perform them.
+.
+.TP
+.BR \-q ", " \-\-quiet ", " \-\-silent
+Suppress output.
+.
+.TP
+.BR \-v ", " \-\-verbose
+Output extra debugging information. Takes precedence over \fB-q\fR.
+.
+.TP
+.BR \-V ", " \-\-version
+Print version information.
+.
+.\" ===================================================================
+.SH COMMANDS
+.\" ===================================================================
+.
+.TP
+.BR protomy-completion (1)
+Used by shells for dynamic autocompletion.
+.
+.TP
+.BR protomy-config (1)
+Get and set global or project-level settings.
+.
+.TP
+.BR protomy-download (1)
+Download a template.
+.
+.TP
+.BR protomy-generate (1)
+Generate a project from a template.
+.
+.TP
+.BR protomy-help (1)
+Print information about commonly used commands and options.
+.
+.TP
+.BR protomy-validate (1)
+Validate a template.
+.
+.\" ===================================================================
+.SH FILES
+.\" ===================================================================
+.
+.\" -------------------------------------------------------------------
+.SS System, User, and Project Configuration Files
+.\" -------------------------------------------------------------------
+.
+For most \fBprotomy\fR commands, configuration is sourced from the following three files:
+.
+.TP
+.BR $XDG_CONFIG_DIRS/protomy/config.yml
+System-wide configuration file.
+.
+.TP
+.BR $XDG_CONFIG_HOME/protomy/config.yml
+User-specific configuration file.
+.
+.TP
+.BR $PROTOMY_PROJECT_DIR/.protomy/config.yml
+Project-specific configuration file.
+.
+.\" ===================================================================
+.SH ENVIRONMENT
+.\" ===================================================================
+.
+.TP
+.BR PROTOMY_CONFIG
+Project-specific configuration file to use instead of \fB$PROTOMY_PROJECT_DIR/.protomy/config\fR.
+.
+.TP
+.BR PROTOMY_PROJECT_DIR
+The directory of the current project. See \fBprotomy-generate\fR(1).
+.
+.\" ===================================================================
+.SH EXIT STATUS
+.\" ===================================================================
+.
+The \fBprotomy\fR program exits 0 on success, and >0 if an error occurs.
+.
+.\" ===================================================================
+.SH EXAMPLES
+.\" ===================================================================
+.
+.\" ===================================================================
+.SH BUGS
+.\" ===================================================================
+.
+Bugs for \fBprotomy\fR are tracked on the
+.UR https://github.com/protomy/protomy/issues
+Protomy GitHub repository
+.UE .
+.
+.\" ===================================================================
+.SH AUTHORS
+.\" ===================================================================
+.
+.\" ===================================================================
+.SH SEE ALSO
+.\" ===================================================================
+.
