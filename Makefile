@@ -72,7 +72,7 @@ docs:
 
 man:
 	rm -fr share/man
-	mkdir -p share/man/man{1,5,7}
+	mkdir -p share/man/man1
 	cp man/*.1 share/man/man1
 	# man/*.5 share/man/man5
 	# man/*.7 share/man/man7
