@@ -30,9 +30,10 @@ const (
 var globalFlags = command.GlobalFlags{}
 
 var rootCmd = &cobra.Command{
-	Use:        cliName,
-	Short:      cliDescription,
-	SuggestFor: []string{"protomy"},
+	Use:              cliName,
+	Short:            cliDescription,
+	SuggestFor:       []string{"protomy"},
+	PersistentPreRun: persistentPreRunFunc,
 }
 
 func init() {
@@ -43,6 +44,7 @@ func init() {
 	rootCmd.PersistentFlags().BoolVarP(&globalFlags.Verbose, "verbose", "v", false, "Output extra debugging information")
 
 	rootCmd.AddCommand(
+		command.NewCheckCommand(),
 		command.NewCompletionCommand(rootCmd),
 		command.NewConfigCommand(),
 		command.NewEnvCommand(),
@@ -57,4 +59,8 @@ func Start() {
 	if err != nil {
 		command.ExitWithError(command.ExitError, err)
 	}
+}
+
+func persistentPreRunFunc(cmd *cobra.Command, args []string) {
+	// TODO: Check for updates if enabled
 }
