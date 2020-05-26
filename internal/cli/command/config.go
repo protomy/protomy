@@ -22,6 +22,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// NewConfigCommand builds and returns a *cobra.Command for the "config" command.
 func NewConfigCommand() *cobra.Command {
 	return &cobra.Command{
 		Use:   "config",

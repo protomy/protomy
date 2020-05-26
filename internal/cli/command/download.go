@@ -22,6 +22,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// NewDownloadCommand builds and returns a *cobra.Command for the "download" command.
 func NewDownloadCommand() *cobra.Command {
 	return &cobra.Command{
 		Use:   "download",

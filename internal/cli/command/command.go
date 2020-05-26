@@ -14,4 +14,5 @@
  * limitations under the License.
  */
 
+// Package command provides the library of commands for the Protomy CLI.
 package command

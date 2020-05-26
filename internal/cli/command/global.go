@@ -16,6 +16,7 @@
 
 package command
 
+// GlobalFlags represents flags that are common to every command.
 type GlobalFlags struct {
 	ConfigFilename  string
 	ConfigOverrides map[string]string

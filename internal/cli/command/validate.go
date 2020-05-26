@@ -22,6 +22,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// NewValidateCommand builds and returns a *cobra.Command for the "validate" command.
 func NewValidateCommand() *cobra.Command {
 	return &cobra.Command{
 		Use:   "validate",

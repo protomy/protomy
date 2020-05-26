@@ -22,6 +22,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// NewCompletionCommand builds and returns a *cobra.Command for the "completion" command.
 func NewCompletionCommand(rootCmd *cobra.Command) *cobra.Command {
 	return &cobra.Command{
 		Use:       "completion",

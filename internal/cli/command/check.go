@@ -22,6 +22,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// NewCheckCommand builds and returns a *cobra.Command for the Protomy "check" command.
 func NewCheckCommand() *cobra.Command {
 	return &cobra.Command{
 		Use:   "check",

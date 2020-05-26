@@ -30,6 +30,7 @@ func NewEnvCommand() *cobra.Command {
 	}
 }
 
+// NewEnvCommand builds and returns a *cobra.Command for the "env" command.
 func envCommandFunc(cmd *cobra.Command, args []string) {
 	fmt.Println("Configuration overrides:")
 	configOverrides, err := cmd.Flags().GetStringToString("config-option")
