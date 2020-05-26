@@ -20,6 +20,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/protomy/protomy/internal/cli/command"
+	"github.com/protomy/protomy/internal/logging"
 )
 
 const (
@@ -62,5 +63,6 @@ func Start() {
 }
 
 func persistentPreRunFunc(cmd *cobra.Command, args []string) {
-	// TODO: Check for updates if enabled
+	logger := logging.New()
+	command.SetLogger(logger)
 }

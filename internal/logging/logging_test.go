@@ -14,17 +14,4 @@
  * limitations under the License.
  */
 
-// Package command provides the library of commands for the Protomy CLI.
-package command
-
-import (
-	"go.uber.org/zap"
-)
-
-var (
-	log *zap.SugaredLogger
-)
-
-func SetLogger(logger *zap.SugaredLogger) {
-	log = logger
-}
+package logging
